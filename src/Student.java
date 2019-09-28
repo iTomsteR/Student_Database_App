@@ -21,7 +21,7 @@ public class Student {
         System.out.println("Enter student last name: ");
         this.lastName = in.nextLine();
 
-        System.out.println("Choose student class level:\n1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nChoose student class level: ");
+        System.out.print("Choose student class level:\n1 - Freshman\n2 - Sophomore\n3 - Junior\n4 - Senior\nChoose student class level: ");
         this.gradeYear = in.nextInt();
 
         generateStudentID();
@@ -53,7 +53,7 @@ public class Student {
 
     //View balance
     public void viewBalance() {
-        System.out.println("Your tuition balance is: " + tuitionBalance + "$");
+        System.out.println("\nYour tuition balance is: " + tuitionBalance + "$");
     }
 
     //Pay tuition
@@ -76,7 +76,7 @@ public class Student {
     //Show status
     @Override
     public String toString() {
-        return "Name: " + firstName + " " + lastName +
+        return "\nName: " + firstName + " " + lastName +
                 "\nGrade Level: " + gradeYear +
                 "\nStudent ID: " + studentID +
                 "\nCourses Enrolled: " + courses +
