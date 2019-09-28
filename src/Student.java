@@ -25,7 +25,6 @@ public class Student {
         this.gradeYear = in.nextInt();
 
         generateStudentID();
-        System.out.println(firstName + " " + lastName + " " + gradeYear + " " + studentID);
 
         courses = "";
         tuitionBalance = 0;
@@ -45,12 +44,10 @@ public class Student {
             Scanner in = new Scanner(System.in);
             String course = in.nextLine();
             if(!course.equalsIgnoreCase("Q")) {
-                courses += "\n" + course;
+                courses += "\n " + course;
                 tuitionBalance += COURSE_COST;
             } else break;
         } while(true);
-
-        System.out.println("Enrolled in: " + courses);
 
     }
 
@@ -65,11 +62,24 @@ public class Student {
         System.out.print("Enter the amount of payment you want to pay: $");
         Scanner in = new Scanner(System.in);
         int payment = in.nextInt();
-        tuitionBalance -= payment;
-        System.out.println("Thank you for your payment of: " + payment + "$");
+        if(tuitionBalance - payment < 0) {
+            System.out.println("Thank you for your payment of: " + payment + "$");
+            System.out.println("Your exchange is: " +  (payment - tuitionBalance) + "$");
+            tuitionBalance = 0;
+        } else {
+            System.out.println("Thank you for your payment of: " + payment + "$");
+            tuitionBalance -= payment;
+        }
         viewBalance();
     }
 
     //Show status
-
+    @Override
+    public String toString() {
+        return "Name: " + firstName + " " + lastName +
+                "\nGrade Level: " + gradeYear +
+                "\nStudent ID: " + studentID +
+                "\nCourses Enrolled: " + courses +
+                "\nBalance: $" + tuitionBalance;
+    }
 }
